@@ -24,6 +24,23 @@ Resources:
           Properties:
             Path: /py_model/{x}
             Method: get
+  RModelFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: RModel
+      CodeUri: r_model/
+      Handler: app.lambda_handler
+      Runtime: provided
+      Layers:
+        - arn:aws:lambda:us-west-1:131329294410:layer:r-runtime-3_6_0:13
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /r_model/{x}
+            Method: get
+    Metadata:
+      BuildMethod: makefile
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
