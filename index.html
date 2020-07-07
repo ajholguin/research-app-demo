@@ -5,15 +5,31 @@
     <title>Research App Demo</title>
     <link rel="stylesheet" href="styles/research-app.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
   </head>
   <body>
-    <div id="app">
-      <div class="slidecontainer">
-        <span>{{ value }}</span>
-        <input type="range" min="0" max="100" v-model="value" class="slider" id="myRange">
+    <h1>Research App Demo</h1>
+    <p>
+      This is a simple web app built using <a href="https://vuejs.org/">Vue.js</a>
+      and <a href="https://aws.amazon.com/lambda/">AWS Lambda</a> functions. The
+      purpose is to test the feasibility of building web apps backed by Python
+      and/or R code running on AWS serverless infrastructure.
+    </p>
+    <div id="app" class="row">
+      <div class="column">
+        <h2>Python</h2>
+        <input type="range" min="0" max="100" v-model="x" v-on:mouseup="fetchData(x)" class="slider" id="myRange">
+        <span>{{ x }}</span>
+        <div>
+          Model Output: {{ y }}
+        </div>
+      </div>
+      <div class="column">
+        <h2>R</h2>
+        <span>TODO</span>
       </div>
     </div>
     
     <script src="scripts/research-app.js"></script>
   </body>
-</html> 
+</html>
