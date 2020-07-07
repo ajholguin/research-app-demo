@@ -15,18 +15,26 @@
       purpose is to test the feasibility of building web apps backed by Python
       and/or R code running on AWS serverless infrastructure.
     </p>
-    <div id="app" class="row">
-      <div class="column">
+
+    <div class="row">
+      <!-- Python Model -->
+      <div id="py-app" class="column">
         <h2>Python</h2>
-        <input type="range" min="0" max="100" v-model="x" v-on:mouseup="fetchData(x)" class="slider" id="myRange">
+        <input type="range" min="0" max="100" v-model="x" v-on:mouseup="fetchData(x)" class="slider">
         <span>{{ x }}</span>
         <div>
           Model Output: {{ y }}
         </div>
       </div>
-      <div class="column">
+
+      <!-- R Model -->
+      <div id="r-app" class="column">
         <h2>R</h2>
-        <span>TODO</span>
+        <input type="range" min="0" max="100" v-model="x" v-on:mouseup="fetchData(x)" class="slider">
+        <span>{{ x }}</span>
+        <div>
+          Model Output: {{ y }}
+        </div>
       </div>
     </div>
     
