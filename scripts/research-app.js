@@ -1,12 +1,12 @@
 var py_app = new Vue({ 
     el: '#py-app',
     data: {
-        x: "0",
-        y: ""
+        x: '0',
+        y: ''
     },
 
     created: function () {
-        this.fetchData("0");
+        this.fetchData('0');
     },        
 
     methods: {
@@ -25,12 +25,12 @@ var py_app = new Vue({
 var r_app = new Vue({ 
     el: '#r-app',
     data: {
-        x: "0",
-        y: ""
+        x: '0',
+        y: ''
     },
 
     created: function () {
-        this.fetchData("0");
+        this.fetchData('0');
     },        
 
     methods: {
