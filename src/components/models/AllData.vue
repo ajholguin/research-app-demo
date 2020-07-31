@@ -25,7 +25,18 @@
 
   // Vue component
   export default {
-    props: ['allValues'],
+    props: {
+      allValues: {
+        type: Array,
+        required: true,
+        validator: (prop) => prop.every(e => {
+          return typeof e === 'object' &&
+            typeof e.id === 'number' &&
+            typeof e.x === 'number' &&
+            typeof e.y === 'number'
+        })
+      }
+    },
     computed: {
       all_values_sorted: function() {
         return this.allValues.sort(compare)
