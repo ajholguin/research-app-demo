@@ -1,10 +1,14 @@
 <template>
   <div class='container'>
     <div class='row'>
-      <nav-header @pageWasChanged='currentPage = $event'></nav-header>
+      <div class="col-sm-12">
+        <nav-header @pageWasChanged='currentPage = $event'></nav-header>
+      </div>
     </div>
     <div class="row">
-      <component :is='currentPage'></component>
+      <keep-alive>
+        <component :is='currentPage'></component>
+      </keep-alive>
     </div>
   </div>
 </template>
