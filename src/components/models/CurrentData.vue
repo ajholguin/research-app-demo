@@ -5,7 +5,7 @@
       <div class="card-body">
       <label for="px-x">X</label>
       <input id="py-x" class="slider" type="range" min="0" max="100"
-        v-model="model.x"
+        v-model.number="model.x"
         @mouseup="fetchData(model.x)">
       <span>{{ model.x }}</span>
       <hr>
@@ -52,7 +52,7 @@
           });
         this.model.id = ids.next().value
         // create and trigger event
-        const model_copy = {...this.model};         // copy object to prevent reactive updates
+        const model_copy = {...this.model};         // copy model data to prevent reactive updates
         this.$emit('modelDataChanged', model_copy);
       }
     },
