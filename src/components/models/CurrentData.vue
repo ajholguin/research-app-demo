@@ -49,15 +49,15 @@
           .get(`https://7tw2vvqr25.execute-api.us-west-1.amazonaws.com/Prod/py_model/${x}/`)
           .then(response => {
             this.model.y = response.data.model_output;
+            this.model.id = ids.next().value
+            // create and trigger event
+            const model_copy = {...this.model};         // copy model data to prevent reactive updates
+            this.$emit('modelDataChanged', model_copy);
           });
-        this.model.id = ids.next().value
-        // create and trigger event
-        const model_copy = {...this.model};         // copy model data to prevent reactive updates
-        this.$emit('modelDataChanged', model_copy);
       }
     },
     filters: {
-      round2: function(x) {
+      round2: function(x) {         // TODO: mixin
         return x.toFixed(2);
       }
     }
