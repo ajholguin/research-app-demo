@@ -4,7 +4,7 @@
     and <a href="https://aws.amazon.com/lambda/">AWS Lambda</a> functions. The
     purpose is to test the feasibility of building web apps backed by Python
     and/or R code running on AWS serverless infrastructure.
-  </p>    
+  </p>
 </template>
 
 <script>
