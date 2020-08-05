@@ -1,6 +1,7 @@
 <template>
   <div class="col-sm-6">
     <current-model-data @modelDataChanged='all_values.push($event)'></current-model-data>
+    <scatter-plot :plotdata="all_values"></scatter-plot>
     <br>
     <all-model-data :allValues='all_values'></all-model-data>
   </div>
@@ -8,8 +9,9 @@
 
 <!-- JS -->
 <script>
-  import CurrentData from './CurrentData.vue'
-  import AllData from './AllData.vue'
+  import CurrentData from './CurrentData.vue';
+  import ScatterPlot from './ScatterPlot.vue';
+  import AllData from './AllData.vue';
 
   // Vue component
   export default {
@@ -20,6 +22,7 @@
     },
     components: {
       currentModelData: CurrentData,
+      scatterPlot: ScatterPlot,
       allModelData: AllData
     }
   }

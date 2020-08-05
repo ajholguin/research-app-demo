@@ -1,8 +1,5 @@
 <template>
 <div>
-    <div class="canvas">
-      <svg id='barplot' width=500 height=400></svg>
-    </div>
     <div class="card" v-if="allValues.length > 0">
       <div class="card-header">
       Saved Values ({{ allValues.length }})
@@ -18,9 +15,6 @@
 
 <!-- JS -->
 <script>
-  import * as d3 from "d3";
-  const color = d3.scaleOrdinal(d3.schemeDark2);
-
   function compare(a, b) {
     let comparison = 0;
     if (a.x > b.x) {
@@ -48,19 +42,6 @@
     computed: {
       all_values_sorted: function() {
         return this.allValues.sort(compare)
-      }
-    },
-    watch: {
-      allValues: function() {
-        d3.select("#barplot")
-          .selectAll("rect")
-          .data(this.allValues)
-          .enter().append("rect")
-          .attr("x", d => d.x * 5)
-          .attr("y", d => 390 - d.y)
-          .attr("height", d => Math.abs(d.y))
-          .attr("width", 4)
-          .attr("fill", (d, i) => color(i));
       }
     },
     filters: {
