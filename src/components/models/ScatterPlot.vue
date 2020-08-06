@@ -52,7 +52,7 @@
         .domain([0, 100])
         .range([0, graphWidth]);
       const yScale = d3.scaleLinear()       // y scale
-        .domain([-10, 210])
+        .domain([0, 200])
         .range([graphHeight, 0]);
       
       const xAxis = d3.axisBottom(xScale);  // add axes
