@@ -15,6 +15,10 @@
 
   export default {
     props: {
+      x: {
+        type: Number,
+        required: true
+      },
       plotdata: {
         type: Array,
         required: true,
@@ -30,54 +34,68 @@
       // set up plot
       var plot = d3.select('#scatterplot');
 
-      var svg = plot.append('svg')    // main SVG
-        .attr('id', 'plot-svg')
+      var svg = plot.append('svg')        // main SVG
         .attr('width', '100%')
         .attr('height', '100%')
         .attr('viewBox','0 0 '+ Math.min(plotWidth, plotHeight)+' ' + Math.min(plotWidth, plotHeight))
         .attr('preserveAspectRatio', 'xMinYMin');
       
-      var graph = svg.append('g')     // graph group
-        .attr('id', 'graph')
+      var graph = svg.append('g')           // graph group
         .attr('width', graphWidth)
         .attr('height', graphHeight)
         .attr('transform', `translate(${margin.left}, ${margin.top})`);
-      graph.append('g')               // x-axis group
-        .attr('id', 'xAxis-g')
+      var xAxisGroup = graph.append('g')    // x-axis group
         .attr('transform', `translate(0, ${graphHeight})`)
-      graph.append('g')               // y-axis group
-        .attr('id', 'yAxis-g')
+      var yAxisGroup = graph.append('g')    // y-axis group
       
-      plot.append('div')              // tooltip
-        .attr('id', 'plot-tooltip')
+      const xScale = d3.scaleLinear()       // x scale
+        .domain([0, 100])
+        .range([0, graphWidth]);
+      const yScale = d3.scaleLinear()       // y scale
+        .domain([-10, 210])
+        .range([graphHeight, 0]);
+      
+      const xAxis = d3.axisBottom(xScale);  // add axes
+      const yAxis = d3.axisLeft(yScale);
+      xAxisGroup.call(xAxis);
+      yAxisGroup.call(yAxis);
+
+      var tooltip = plot.append('div')      // tooltip
         .style('opacity', 0);
+
+      // save references for later use
+      this.$options.graph = graph;
+      this.$options.xScale = xScale;
+      this.$options.yScale = yScale;
+      this.$options.tooltip = tooltip;
     },
     watch: {
       // update plot
-      plotdata: function(data) {
-        
-        const svg = d3.select('#scatterplot > #plot-svg');
-        const graph = svg.select('#graph');
-        const xAxisGroup = graph.select('#xAxis-g');
-        const yAxisGroup = graph.select('#yAxis-g');
-        const tooltip = d3.select('#scatterplot > #plot-tooltip');
+      x: function(x) {
+        const graph = this.$options.graph;
+        const xScale = this.$options.xScale;
+        const yScale = this.$options.yScale;
 
-        const x = d3.scaleLinear()
-          .domain([0, 100])
-          .range([0, graphWidth]);
-        const y = d3.scaleLinear()
-          .domain([-10, 210])
-          .range([graphHeight, 0]);
-        const xAxis = d3.axisBottom(x);
-        const yAxis = d3.axisLeft(y);
-        xAxisGroup.call(xAxis);
-        yAxisGroup.call(yAxis);
-        
+        graph.selectAll('line').remove()  // TODO: update rather than re-add
+        graph.append('line')
+          .attr("x1", xScale(x))
+          .attr("y1", 0)
+          .attr("x2", xScale(x))
+          .attr("y2", graphHeight)
+          .style("stroke-width", 1)
+          .style("stroke", "salmon");
+      },
+      plotdata: function(data) {
+        const graph = this.$options.graph;
+        const xScale = this.$options.xScale;
+        const yScale = this.$options.yScale;
+        const tooltip = this.$options.tooltip;
+
         graph.selectAll("circle")
-          .data(data)
+          .data(data, d => d.id)
           .enter().append("circle")
-          .attr("cx", d => x(d.x))
-          .attr("cy", d => y(d.y))
+          .attr("cx", d => xScale(d.x))
+          .attr("cy", d => yScale(d.y))
           .attr("r", 4)
           .attr("fill", (d, i) => color(i))
           .on('mouseover', (d, i, n) => {

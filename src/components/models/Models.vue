@@ -6,14 +6,14 @@
           <div class="l-quad__region">
             <div class="panel o-box--large">
               <h1 class="panel__title">Python Model</h1>
-              <current-model-data @modelDataChanged='all_values.push($event)'></current-model-data>
+              <current-model-data @xChanged='x=$event' @modelDataChanged='all_values.push($event)'></current-model-data>
               <all-model-data :allValues='all_values'></all-model-data>
             </div>
           </div>
           <div class="l-quad__region">
             <div class="panel o-box--large">
               <h1 class="panel__title">Plot</h1>
-              <scatter-plot :plotdata="all_values"></scatter-plot>
+              <scatter-plot :x='x' :plotdata='all_values'></scatter-plot>
             </div>
           </div>
         </div>
@@ -32,6 +32,7 @@
   export default {
     data: function() {
       return {
+        x: 0,
         all_values: []
       }
     },
