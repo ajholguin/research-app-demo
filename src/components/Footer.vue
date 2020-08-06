@@ -5,7 +5,7 @@
           <div class="flex-footer__item">
             <div class="site-credits">
               <div class="site-credits__logo">
-                <a href="#" class=""><img src="../assets/images/c-horse.svg" class="site-logo" alt="Site Logo" /></a>
+                <img src="../assets/images/c-horse.svg" class="site-logo" alt="Site Logo" />
               </div>
               <p>
                 Lab/Researcher Contact Info<br>

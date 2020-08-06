@@ -10,7 +10,7 @@
         </div>
         <div class="header__branding">
             <div class="l-container o-media">
-                <div class="o-media__figure"><a href="#" class=""><img src="../assets/images/c-horse.svg" class="site-logo" alt="Site Logo" /></a>
+                <div class="o-media__figure nav-item"><a @click="pageSelected='intro'"><img src="../assets/images/c-horse.svg" class="site-logo" alt="Site Logo" /></a>
                 </div>
                 <div class="o-media__body">
                     <h1 class="header__site-name">Research App Demo</h1>
@@ -23,8 +23,8 @@
                 <div class="off-canvas__container">
                 <nav id="primary-nav" class="primary-nav primary-nav--superfish" aria-label="Main Menu">
                     <ul class="menu">
-                        <li class='nav-item'><a class='nav-link' @click="pageSelected='intro'">Intro</a></li>
-                        <li class='nav-item'><a class='nav-link' @click="pageSelected='models'">Models</a></li>
+                        <li class='nav-item'><a @click="pageSelected='intro'">Intro</a></li>
+                        <li class='nav-item'><a @click="pageSelected='models'">Models</a></li>
                     </ul>
                 </nav>
                 </div>
