@@ -34,7 +34,7 @@
         .attr('id', 'plot-svg')
         .attr('width', '100%')
         .attr('height', '100%')
-        .attr('viewBox','0 0 '+ Math.min(plotWidth, plotHeight)+' '+Math.min(plotWidth, plotHeight))
+        .attr('viewBox','0 0 '+ Math.min(plotWidth, plotHeight)+' ' + Math.min(plotWidth, plotHeight))
         .attr('preserveAspectRatio', 'xMinYMin');
       
       var graph = svg.append('g')     // graph group
@@ -115,5 +115,9 @@
     border: 0px;
     border-radius: 5px;
     pointer-events: none;
+  }
+
+  #scatterplot {
+    height: 400px;
   }
 </style>

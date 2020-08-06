@@ -1,16 +1,17 @@
 <template>
   <!-- Current data -->
-  <div class="card">
-    <div class="card-header">Python</div>
-      <div class="card-body">
-      <label for="px-x">X</label>
+  <div class="panel">
+    <h3>Input Value</h3>
+    <div>
+      <label for="px-x">X &rarr; {{ model.x }}</label>
       <input id="py-x" class="slider" type="range" min="0" max="100"
         v-model.number="model.x"
         @mouseup="fetchData(model.x)">
-      <span>{{ model.x }}</span>
-      <hr>
-      Model Output: {{ model.y | round2 }}
-      </div>
+    </div>
+    <div>
+      <h3>Model Output</h3>
+      <strong>Y &rarr; {{ model.y | round2 }}</strong>
+    </div>
   </div>
 </template>
 
@@ -66,5 +67,8 @@
 
 <!-- CSS -->
 <style scoped>
-
+  #py-x {
+    padding: 0;   /* fix issue coming from style.css (UCD One Pattern Lab) */
+    box-shadow: none
+  }
 </style>

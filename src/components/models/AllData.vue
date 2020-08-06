@@ -1,16 +1,21 @@
 <template>
-<div>
-    <div class="card" v-if="allValues.length > 0">
-      <div class="card-header">
-      Saved Values ({{ allValues.length }})
-      </div>
-      <ul class="list-group list-group-flush">
-      <li class="list-group-item" v-for="(value, i) in all_values_sorted" :key="value.id">
-          {{i}} | id {{value.id}}: ({{ value.x }}, {{ value.y | round2 }})
-      </li>
-      </ul>
-    </div>
-</div>
+  <div class="panel o-box--large" v-if="allValues.length > 0">
+    <h2 class="panel__title">Saved Values ({{ allValues.length }})</h2>
+    <table class="table--hover">
+      <thead>
+        <th v-for="key in Object.keys(all_values_sorted[0])" :key="key">
+          {{ key }}
+        </th>
+      </thead>
+      <tbody>
+        <tr v-for="value in all_values_sorted" :key="value.id">
+          <td> {{value.id}} </td>
+          <td> {{value.x}} </td>
+          <td> {{value.y | round2}} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <!-- JS -->
@@ -54,5 +59,4 @@
 
 <!-- CSS -->
 <style scoped>
-
 </style>
