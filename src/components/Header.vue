@@ -22,10 +22,15 @@
             <div class="l-container--navigation off-canvas off-canvas--left">
                 <div class="off-canvas__container">
                 <nav id="primary-nav" class="primary-nav primary-nav--superfish" aria-label="Main Menu">
-                    <ul class="menu">
-                        <li class='nav-item'><a @click="pageSelected='intro'">Intro</a></li>
-                        <li class='nav-item'><a @click="pageSelected='pyModel'">Python Model</a></li>
-                        <li class='nav-item'><a @click="pageSelected='rModel'">R Model</a></li>
+                    <ul class="menu sf-js-enabled sf-arrows">
+                        <li class='menu-item nav-item'><a @click="pageSelected='intro'">Intro</a></li>
+                        <li class='menu-item menu-item--expanded'>
+                            <a class='sf-with-ul' @click="pageSelected='models'">Models<span class="submenu-toggle"><span class="submenu-toggle__icon">+</span></span></a>
+                            <ul class="menu">
+                                <li class='menu-item nav-item'><a @click="pageSelected='pyModel'">Python Model</a></li>
+                                <li class='menu-item nav-item'><a @click="pageSelected='rModel'">R Model</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 </div>
@@ -52,5 +57,8 @@ export default {
 <style scoped>
     .nav-item:hover {
         cursor: pointer;
+    }
+    .l-navbar {
+        padding: 0;
     }
 </style>
