@@ -14,6 +14,7 @@ import * as ucd from './assets/js/scripts.js'   // UCD One Pattern Lab
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Intro from './components/Intro.vue'
+import ModelsOverview from './components/models/ModelsOverview.vue'
 import Models from './components/models/Models.vue'
 
 var PyModel = {
@@ -39,6 +40,7 @@ export default {
     navHeader: Header,
     navFooter: Footer,
     intro: Intro,
+    modelsOverview: ModelsOverview,
     pyModel: PyModel,
     rModel: RModel
   }

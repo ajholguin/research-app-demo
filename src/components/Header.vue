@@ -25,7 +25,7 @@
                     <ul class="menu sf-js-enabled sf-arrows">
                         <li class='menu-item nav-item'><a @click="pageSelected='intro'">Intro</a></li>
                         <li class='menu-item menu-item--expanded'>
-                            <a class='sf-with-ul' @click="pageSelected='models'">Models<span class="submenu-toggle"><span class="submenu-toggle__icon">+</span></span></a>
+                            <a class='sf-with-ul' @click="pageSelected='modelsOverview'">Models<span class="submenu-toggle"><span class="submenu-toggle__icon">+</span></span></a>
                             <ul class="menu">
                                 <li class='menu-item nav-item'><a @click="pageSelected='pyModel'">Python Model</a></li>
                                 <li class='menu-item nav-item'><a @click="pageSelected='rModel'">R Model</a></li>
