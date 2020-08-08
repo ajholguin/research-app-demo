@@ -16,6 +16,19 @@ import Footer from './components/Footer.vue'
 import Intro from './components/Intro.vue'
 import Models from './components/models/Models.vue'
 
+var PyModel = {
+  ...Models,
+  modelType: 'Python',
+  modelTypeLogo: require('./assets/images/python-logo-generic.svg'),
+  modelURL: 'https://7tw2vvqr25.execute-api.us-west-1.amazonaws.com/Prod/py_model/'
+}
+var RModel = {
+  ...Models,
+  modelType: 'R',
+  modelTypeLogo: require('./assets/images/Rlogo.svg'),
+  modelURL: 'https://7tw2vvqr25.execute-api.us-west-1.amazonaws.com/Prod/r_model/'
+}
+
 export default {
   data: function() {
     return {
@@ -26,7 +39,8 @@ export default {
     navHeader: Header,
     navFooter: Footer,
     intro: Intro,
-    models: Models
+    pyModel: PyModel,
+    rModel: RModel
   }
 }
 </script>

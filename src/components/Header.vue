@@ -24,7 +24,8 @@
                 <nav id="primary-nav" class="primary-nav primary-nav--superfish" aria-label="Main Menu">
                     <ul class="menu">
                         <li class='nav-item'><a @click="pageSelected='intro'">Intro</a></li>
-                        <li class='nav-item'><a @click="pageSelected='models'">Models</a></li>
+                        <li class='nav-item'><a @click="pageSelected='pyModel'">Python Model</a></li>
+                        <li class='nav-item'><a @click="pageSelected='rModel'">R Model</a></li>
                     </ul>
                 </nav>
                 </div>

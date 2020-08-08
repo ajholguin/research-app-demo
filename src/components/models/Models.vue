@@ -5,8 +5,9 @@
         <div class="l-quad--half">
           <div class="l-quad__region">
             <div class="panel o-box--large">
-              <h1 class="panel__title">Python Model</h1>
-              <current-model-data @xChanged='x=$event' @modelDataChanged='all_values.push($event)'></current-model-data>
+              <h1 id='pagetitle' class="panel__title">{{ this.$options.modelType }} Model</h1>
+              <img id='logo' :src='this.$options.modelTypeLogo' alt="Model Language Logo"/>
+              <current-model-data :url='this.$options.modelURL' @xChanged='x=$event' @modelDataChanged='all_values.push($event)'></current-model-data>
               <all-model-data :allValues='all_values'></all-model-data>
             </div>
           </div>
@@ -30,6 +31,9 @@
 
   // Vue component
   export default {
+    modelType: '',
+    modelTypeLogo: '',
+    modelURL: '',
     data: function() {
       return {
         x: 0,
@@ -46,5 +50,11 @@
 
 <!-- CSS -->
 <style scoped>
-
+  #pagetitle {
+    display: inline-block;
+  }
+  #logo {
+    float: right;
+    max-height:45px;
+  }
 </style>

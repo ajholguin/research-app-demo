@@ -31,6 +31,12 @@
   
   // Vue component
   export default {
+    props: {
+      url: {                        // model endpoint to use
+        type: String,
+        required: true
+      }
+    },
     data: function() {
       return {
         x: 0,
@@ -38,18 +44,18 @@
       }
     },
     created: function () {
-      this.fetchData(this.x);
+      this.fetchData(this.x);       // get initial value
     },
     watch: {
       x: function(x) {
-        this.$emit('xChanged', x);
+        this.$emit('xChanged', x);  // notify dependents when X changes
       }
     },
     methods: {
       fetchData: function (x) {
         // get model output
         axios
-          .get(`https://7tw2vvqr25.execute-api.us-west-1.amazonaws.com/Prod/py_model/${x}/`)
+          .get(this.url + x + '/')
           .then(response => {
             this.y = response.data.model_output;
             var model_data = {
