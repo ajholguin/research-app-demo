@@ -22,7 +22,7 @@
             <div class="footer-nav">
               <ul class="menu">
                 <li class='nav-item'><a class='nav-link' @click="pageSelected='intro'">Intro</a></li>
-                <li class='nav-item'><a class='nav-link' @click="pageSelected='models'">Models</a></li>
+                <li class='nav-item'><a class='nav-link' @click="pageSelected='modelsOverview'">Models</a></li>
               </ul>
             </div>
           </div>
