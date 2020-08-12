@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import { EventBus } from '../main.js'
+
 export default {
     data: function() {
         return {
@@ -48,7 +50,7 @@ export default {
     },
     watch: {
         pageSelected: function() {
-            this.$emit('pageWasChanged', this.pageSelected)
+            EventBus.$emit('pageChanged', this.pageSelected)
         }
     }
 }

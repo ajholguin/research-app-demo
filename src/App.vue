@@ -1,16 +1,18 @@
 <template>
   <div class="page l-header--fixed">
-    <nav-header @pageWasChanged='currentPage = $event'></nav-header>
+    <nav-header></nav-header>
     <keep-alive>
       <component :is='currentPage'></component>
     </keep-alive>
-    <nav-footer @pageWasChanged='currentPage = $event'></nav-footer>
+    <nav-footer></nav-footer>
   </div>
 </template>
 
 <!-- JS -->
 <script>
 import * as ucd from './assets/js/scripts.js'   // UCD One Pattern Lab
+import { EventBus } from './main.js'
+
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Intro from './components/Intro.vue'
@@ -43,6 +45,9 @@ export default {
     modelsOverview: ModelsOverview,
     pyModel: PyModel,
     rModel: RModel
+  },
+  created() {
+    EventBus.$on('pageChanged', page => this.currentPage = page)
   }
 }
 </script>
