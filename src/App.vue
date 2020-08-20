@@ -17,17 +17,17 @@ import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Intro from './components/Intro.vue'
 import ModelsOverview from './components/models/ModelsOverview.vue'
-import Models from './components/models/Models.vue'
+import LambdaModelPage from './components/models/LambdaModelPage.vue'
 import PyodideModelPage from './components/models/PyodideModelPage.vue'
 
 var PyModel = {
-  ...Models,
+  ...LambdaModelPage,
   modelType: 'Python',
   modelTypeLogo: require('./assets/images/python-logo-generic.svg'),
   modelURL: 'https://7tw2vvqr25.execute-api.us-west-1.amazonaws.com/Prod/py_model/'
 }
 var RModel = {
-  ...Models,
+  ...LambdaModelPage,
   modelType: 'R',
   modelTypeLogo: require('./assets/images/Rlogo.svg'),
   modelURL: 'https://7tw2vvqr25.execute-api.us-west-1.amazonaws.com/Prod/r_model/'

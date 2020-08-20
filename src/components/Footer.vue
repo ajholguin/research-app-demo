@@ -22,7 +22,8 @@
             <div class="footer-nav">
               <ul class="menu">
                 <li class='nav-item'><a class='nav-link' @click="pageSelected='intro'">Intro</a></li>
-                <li class='nav-item'><a class='nav-link' @click="pageSelected='modelsOverview'">Models</a></li>
+                <li class='nav-item'><a class='nav-link' @click="pageSelected='modelsOverview'">AWS Lambda Models</a></li>
+                <li class='nav-item'><a class='nav-link' @click="pageSelected='pyodideModelPage'">Pyodide Model</a></li>
               </ul>
             </div>
           </div>
