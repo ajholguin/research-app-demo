@@ -6,7 +6,7 @@
       <label for="px-x">X &rarr; {{ x }}</label>
       <input id="py-x" class="slider" type="range" min="0" max="100"
         v-model.number="x"
-        @mouseup="fetchData(x)">
+        @mouseup="updateAllData()">
     </div>
     <div>
       <h3>Model Output</h3>
@@ -17,49 +17,43 @@
 
 <!-- JS -->
 <script>
-  import axios from "axios";
   import {infinite} from '../../util.js';
-
+  
   // ID generator
   const ids = infinite();
   
   // Vue component
   export default {
-    props: {
-      url: {                        // model endpoint to use
-        type: String,
-        required: true
-      }
-    },
     data: function() {
       return {
         x: 0,
         y: 0
       }
     },
-    created: function () {
-      this.fetchData(this.x);       // get initial value
-    },
     watch: {
       x: function(x) {
         this.$emit('xChanged', x);  // notify dependents when X changes
+        this.runModel(x)            // update Y
       }
     },
     methods: {
-      fetchData: function (x) {
-        // get model output
-        axios
-          .get(this.url + x + '/')
-          .then(response => {
-            this.y = response.data.model_output;
-            var model_data = {
-              id: ids.next().value,
-              x: x,
-              y: response.data.model_output
-            }
-            this.$emit('modelDataChanged', model_data);
+        runModel: function(x) {
+          languagePluginLoader.then(() => {
+            pyodide.globals.x = this.x
+            this.y = pyodide.runPython(`
+              from random import gauss
+              2*x + 1 + gauss(0, 1)
+            `);
           });
-      }
+        },
+        updateAllData: function () {
+          var model_data = {
+            id: ids.next().value,
+            x: this.x,
+            y: this.y
+          }
+          this.$emit('modelDataChanged', model_data);
+        }
     },
     filters: {
       round2: function(x) {         // TODO: mixin

@@ -18,6 +18,7 @@ import Footer from './components/Footer.vue'
 import Intro from './components/Intro.vue'
 import ModelsOverview from './components/models/ModelsOverview.vue'
 import Models from './components/models/Models.vue'
+import PyodideModelPage from './components/models/PyodideModelPage.vue'
 
 var PyModel = {
   ...Models,
@@ -44,7 +45,8 @@ export default {
     intro: Intro,
     modelsOverview: ModelsOverview,
     pyModel: PyModel,
-    rModel: RModel
+    rModel: RModel,
+    pyodideModelPage: PyodideModelPage
   },
   created() {
     EventBus.$on('pageChanged', page => this.currentPage = page)

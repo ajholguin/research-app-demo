@@ -31,6 +31,7 @@
                                 <li class='menu-item nav-item'><a @click="pageSelected='rModel'">R Model</a></li>
                             </ul>
                         </li>
+                        <li class='menu-item nav-item'><a @click="pageSelected='pyodideModelPage'">Pyodide Model</a></li>
                     </ul>
                 </nav>
                 </div>
